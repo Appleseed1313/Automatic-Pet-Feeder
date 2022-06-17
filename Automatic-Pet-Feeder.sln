@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sqwashies.AutoPetFeeder.Components", "Sqwashies.AutoPetFeeder.Components\Sqwashies.AutoPetFeeder.Components.csproj", "{99F3E16F-C9A6-484E-A94A-C923728AA42C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sqwashies.AutoPetFeeder.Web", "Sqwashies.AutoPetFeeder.Web\Sqwashies.AutoPetFeeder.Web.csproj", "{CF882C93-1715-4033-8EFD-ABEE0EA2062A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99F3E16F-C9A6-484E-A94A-C923728AA42C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99F3E16F-C9A6-484E-A94A-C923728AA42C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99F3E16F-C9A6-484E-A94A-C923728AA42C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99F3E16F-C9A6-484E-A94A-C923728AA42C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF882C93-1715-4033-8EFD-ABEE0EA2062A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF882C93-1715-4033-8EFD-ABEE0EA2062A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF882C93-1715-4033-8EFD-ABEE0EA2062A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF882C93-1715-4033-8EFD-ABEE0EA2062A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D171D29B-8618-4934-BECA-074DC2ED7D30}
+	EndGlobalSection
+EndGlobal
