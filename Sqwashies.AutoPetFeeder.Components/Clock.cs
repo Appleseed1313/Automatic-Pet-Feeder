@@ -13,7 +13,10 @@ namespace Sqwashies.AutoPetFeeder.Components
         {
 
         }
-
+        public DateTime GetTimeFromNavalClock()
+        { 
+            return DateTime.Now;
+        }
         public bool IsClockSet()
         {
 
