@@ -26,8 +26,9 @@ namespace Sqwashies.AutoPetFeeder.Components
         {
             var clock = new Clock();
             var time = clock.GetClockTime();
-            var breakfastTime = "7:00 AM";
+            var breakfastTime = "11:49 AM";
             var dinnerTime = "7:34 PM";
+            
 
             Console.WriteLine("The current time is:" + time.ToShortTimeString());
 

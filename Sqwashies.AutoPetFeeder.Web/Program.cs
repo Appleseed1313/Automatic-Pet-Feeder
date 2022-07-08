@@ -1,3 +1,6 @@
+using Hangfire;
+using Hangfire.MemoryStorage;
+using Hangfire.Dashboard;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Sqwashies.AutoPetFeeder.Components;
@@ -10,6 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddHangfire(hangfire => hangfire.UseMemoryStorage());
+builder.Services.AddHangfireServer();
 
 var app = builder.Build();
 
@@ -21,6 +26,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseHangfireDashboard("/hangfire", new DashboardOptions
+{
+    IsReadOnlyFunc = (DashboardContext context) => true
+});
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
@@ -30,54 +39,13 @@ app.UseRouting();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
-try
-{
-    var clock = new Clock();
-    bool clockIsSet = clock.IsClockSet();
+FeedingJob feedingjob = new FeedingJob();
+RecurringJob.AddOrUpdate(
+    "Feeding Scheduler",
+    () => feedingjob.Begin(),
+    Cron.Minutely());
 
-    if (clockIsSet)
-    {
-        Console.WriteLine("The time is:" + clock.GetClockTime());
-        var scheduler = new Scheduler();
-        bool schedulerOn = scheduler.IsSchedulerTurnedOn();
 
-        if (schedulerOn)
-        {
-            Console.WriteLine("Scheduler is On!");
-
-            bool isFeedingTime = scheduler.IsFeedingTime();
-
-            if (isFeedingTime)
-            {
-                if (scheduler.IsBreakfastTime)
-                {
-                    Console.WriteLine("Dispense Breakfast");
-                    var breakfastDispenser = new Dispenser();
-                    breakfastDispenser.DispenseBreakfast();
-                }
-
-                if (scheduler.IsDinnerTime)
-                {
-                    Console.WriteLine("Dispense Dinner");
-                    var dinnerDispenser = new Dispenser();
-                    dinnerDispenser.DispenseDinner();
-                }
-            }
-        }
-        else
-        {
-            Console.WriteLine("Scheduler not on: Waiting another minute");
-        }
-    }
-    else
-    {
-        Console.WriteLine("Need to get time from naval clock");
-    }
-}
-catch (Exception ex)
-{
-
-    throw;
-}
 
 app.Run();
+
